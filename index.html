@@ -38,6 +38,31 @@
         .zoom-button:hover {
             background-color: #0056b3;
         }
+        .notes {
+            width: 80%;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .notes h2 {
+            color: #333;
+        }
+        .notes ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .notes li {
+            margin: 10px 0;
+        }
+        .notes a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .notes a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -85,7 +110,16 @@
         <td>990 3170 7429</td>
         <td>402962</td>
     </tr>
-</table>
+    </table>
+
+    <div class="notes">
+        <h2>Notes</h2>
+        <ul>
+            <li><a href="https://drive.google.com/drive/folders/1BWAMiaCtkTJpkRx6GVfTs3pnPV4u87gn" target="_blank">Drive Folder 1</a></li>
+            <li><a href="https://drive.google.com/drive/folders/1FSn_uzFaQecNQZdGXDsBV2ILXIq_Mzaa" target="_blank">Drive Folder 2</a></li>
+            <!-- Add more notes as needed -->
+        </ul>
+    </div>
 
     <script>
         function joinMeeting(meetingId, passcode) {
