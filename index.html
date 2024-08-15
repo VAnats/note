@@ -9,6 +9,7 @@
             font-family: Arial, sans-serif;
             background-color: #f9f9f9;
             text-align: center;
+            perspective: 1000px;
         }
         h1 {
             color: #333;
@@ -19,6 +20,9 @@
             border-collapse: collapse;
             background-color: #fff;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            transition: transform 0.5s;
         }
         th, td {
             padding: 10px;
@@ -27,16 +31,20 @@
         th {
             background-color: #f5f5f5;
         }
-        .zoom-button {
-            background-color: #333; /* Warna latar belakang tombol */
-            color: #fff; /* Warna teks pada tombol */
+        .zoom-button, .drive-button {
+            background-color: #333;
+            color: #fff;
             border: none;
             cursor: pointer;
             padding: 5px 10px;
             border-radius: 5px;
+            transition: transform 0.2s, background-color 0.3s;
         }
-        .zoom-button:hover {
-            background-color: #555; /* Warna latar belakang tombol saat dihover */
+        .zoom-button:hover, .drive-button:hover {
+            background-color: #555;
+        }
+        .zoom-button:active, .drive-button:active {
+            transform: scale(0.95);
         }
         .notes {
             width: 80%;
@@ -62,7 +70,7 @@
             background-color: #f5f5f5;
         }
         .notes a {
-            color: #333; /* Warna teks tautan */
+            color: #333;
             text-decoration: none;
         }
         .notes a:hover {
@@ -72,7 +80,7 @@
 </head>
 <body>
     <h1>Zoom Meeting Links</h1>
-    <table>
+    <table id="zoom-table">
         <tr>
             <th>Day</th>
             <th>Link</th>
@@ -81,13 +89,13 @@
         </tr>
         <tr>
             <td>Senin</td>
-            <td><button class="zoom-button" onclick="joinMeeting('98893749322', '689821')">Join</button></td>
+            <td><button class="zoom-button" onclick="window.location.href='https://zoom.us/j/98893749322?pwd=RTJMN0gwREdNQ0pRd3JhZjJBejZlZz09'">Join</button></td>
             <td>988 9374 9322</td>
             <td>689821</td>
         </tr>
         <tr>
             <td>Selasa</td>
-            <td><button class="zoom-button" onclick="joinMeeting('99530067129', '745213')">Join</button></td>
+            <td><button class="zoom-button" onclick="window.location.href='https://zoom.us/j/99530067129?pwd=SkQ2SHllNFZQNnI2bWdUVXNoeG5EQT09'">Join</button></td>
             <td>995 3006 7129</td>
             <td>745213</td>
         </tr>
@@ -99,19 +107,19 @@
         </tr>
         <tr>
             <td>Kamis</td>
-            <td><button class="zoom-button" onclick="joinMeeting('96063018029', '175227')">Join</button></td>
+            <td><button class="zoom-button" onclick="window.location.href='https://zoom.us/j/96063018029?pwd=UGdhaENVMEZ4Sk9DbzhBdGozQkJRUT09'">Join</button></td>
             <td>960 6301 8029</td>
             <td>175227</td>
         </tr>
         <tr>
             <td>Jumat</td>
-            <td><button class="zoom-button" onclick="joinMeeting('93941334750', '374085')">Join</button></td>
+            <td><button class="zoom-button" onclick="window.location.href='https://zoom.us/j/93941334750?pwd=SzNGbXpFR0lHL0JCUGFTRGZnM0ZsQT09'">Join</button></td>
             <td>939 4133 4750</td>
             <td>374085</td>
         </tr>
         <tr>
             <td>Sabtu</td>
-            <td><button class="zoom-button" onclick="joinMeeting('99031707429', '402962')">Join</button></td>
+            <td><button class="zoom-button" onclick="window.location.href='https://zoom.us/j/99031707429?pwd=VEd1VmhVM2hKSWY2SldHVFl4V0h6QT09'">Join</button></td>
             <td>990 3170 7429</td>
             <td>402962</td>
         </tr>
@@ -121,20 +129,24 @@
         <h2>Notes</h2>
         <table>
             <tr>
-                <td><a href="https://drive.google.com/drive/folders/1FSn_uzFaQecNQZdGXDsBV2ILXIq_Mzaa" target="_blank">Drive Praktikum Basis Data</a></td>
+                <td><button class="drive-button" onclick="window.open('', '_blank')"> </button></td>
             </tr>
             <tr>
-                <td><a href="https://drive.google.com/drive/folders/1BWAMiaCtkTJpkRx6GVfTs3pnPV4u87gn" target="_blank">Drive Praktikum Multimedia</a></td>
+                <td><button class="drive-button" onclick="window.open('', '_blank')"> </button></td>
             </tr>
-            <!-- Add more notes as needed -->
         </table>
     </div>
 
     <script>
-        function joinMeeting(meetingId, passcode) {
-            const zoomLink = `https://zoom.us/j/${meetingId}?pwd=${passcode}`;
-            window.location.href = zoomLink;
+        function handleOrientation(event) {
+            const { alpha, beta, gamma } = event;
+            const table = document.getElementById('zoom-table');
+            const xRotation = Math.min(Math.max(beta, -30), 30);
+            const yRotation = Math.min(Math.max(gamma, -30), 30);
+            table.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
         }
+
+        window.addEventListener('deviceorientation', handleOrientation);
     </script>
 </body>
 </html>
