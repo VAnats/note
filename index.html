@@ -80,7 +80,6 @@
 </head>
 <body>
     <h1>Zoom Meeting Links</h1>
-<div class="zoom-table">
 <table>
     <tr>
         <td>Senin</td>
@@ -115,13 +114,11 @@
     <tr>
         <td>Sabtu</td>
         <td><a class="zoom-button" href="https://zoom.us/j/97117895490?pwd=ZmQ0RzY4K1UvNUU3TVF5Y2VYemVqQT09" target="_blank">Join</a></td>
-        <td>990 3170 7429</td>
-        <td>402962</td>
+        <td></td>
+        <td></td>
     </tr>
 </table>
-</div>
 
-    <div class="notes">
         <h2>Notes</h2>
         <table>
             <tr>
@@ -131,18 +128,5 @@
                 <td><button class="drive-button" onclick="window.open('', '_blank')"> </button></td>
             </tr>
         </table>
-    </div>
-
-    <script>
-        function handleOrientation(event) {
-            const { alpha, beta, gamma } = event;
-            const table = document.getElementById('zoom-table');
-            const xRotation = Math.min(Math.max(beta, -30), 30);
-            const yRotation = Math.min(Math.max(gamma, -30), 30);
-            table.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
-        }
-
-        window.addEventListener('deviceorientation', handleOrientation);
-    </script>
 </body>
 </html>
