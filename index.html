@@ -1,132 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catatan Kecil</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            text-align: center;
-            perspective: 1000px;
-        }
-        h1 {
-            color: #333;
-        }
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transform-style: preserve-3d;
-            transform: rotateY(0deg);
-            transition: transform 0.5s;
-        }
-        th, td {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f5f5f5;
-        }
-        .zoom-button, .drive-button {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: transform 0.2s, background-color 0.3s;
-        }
-        .zoom-button:hover, .drive-button:hover {
-            background-color: #555;
-        }
-        .zoom-button:active, .drive-button:active {
-            transform: scale(0.95);
-        }
-        .notes {
-            width: 80%;
-            margin: 20px auto;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .notes h2 {
-            color: #333;
-            padding: 10px;
-            background-color: #f5f5f5;
-            margin: 0;
-        }
-        .notes table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .notes th, .notes td {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-        .notes th {
-            background-color: #f5f5f5;
-        }
-        .notes a {
-            color: #333;
-            text-decoration: none;
-        }
-        .notes a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catatan Kecil</title>
+  <style>
+    :root {
+      --primary-bg: #f9f9f9;
+      --card-bg: #ffffff;
+      --text-dark: #333;
+      --accent: #333;
+      --accent-hover: #555;
+      --border-color: #e0e0e0;
+      --shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--primary-bg);
+      color: var(--text-dark);
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 800px;
+      background-color: var(--card-bg);
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      background-color: #f0f0f0;
+      font-weight: 600;
+    }
+
+    .zoom-button,
+    .drive-button {
+      display: inline-block;
+      background-color: var(--accent);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .zoom-button:hover,
+    .drive-button:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .zoom-button:active,
+    .drive-button:active {
+      transform: scale(0.95);
+    }
+
+    .drive-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 16px;
+      justify-content: center;
+    }
+
+    .drive-section button {
+      flex: 1 1 auto;
+      max-width: 250px;
+    }
+
+    @media (max-width: 600px) {
+      th, td {
+        padding: 10px 8px;
+      }
+
+      .zoom-button, .drive-button {
+        width: 100%;
+        font-size: 14px;
+      }
+
+      .drive-section {
+        flex-direction: column;
+        padding: 12px;
+      }
+
+      .drive-section button {
+        max-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Zoom Meeting Links</h1>
-<table>
-    <tr>
+
+  <h1>Zoom Meeting Links</h1>
+  <div class="card">
+    <table>
+      <tr>
         <td>Senin</td>
         <td><a class="zoom-button" href="https://zoom.us/j/98893749322?pwd=RTJMN0gwREdNQ0pRd3JhZjJBejZlZz09" target="_blank">Join</a></td>
         <td></td>
         <td></td>
-    </tr>
-    <tr>
+      </tr>
+      <tr>
         <td>Selasa</td>
         <td><a class="zoom-button" href="https://zoom.us/j/99530067129?pwd=SkQ2SHllNFZQNnI2bWdUVXNoeG5EQT09" target="_blank">Join</a></td>
         <td></td>
         <td></td>
-    </tr>
-    <tr>
+      </tr>
+      <tr>
         <td>Rabu</td>
         <td><a class="zoom-button" onclick="alert('Rabu Kosong Cok!')">Join</a></td>
-        <td>-</td>
-        <td>-</td>
-    </tr>
-    <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
         <td>Kamis</td>
         <td><a class="zoom-button" href="https://zoom.us/j/96063018029?pwd=UGdhaENVMEZ4Sk9DbzhBdGozQkJRUT09" target="_blank">Join</a></td>
         <td></td>
         <td></td>
-    </tr>
-    <tr>
+      </tr>
+      <tr>
         <td>Jumat</td>
         <td><a class="zoom-button" href="https://zoom.us/j/93941334750?pwd=SzNGbXpFR0lHL0JCUGFTRGZnM0ZsQT09" target="_blank">Join</a></td>
         <td></td>
         <td></td>
-    </tr>
-    <tr>
+      </tr>
+      <tr>
         <td>Sabtu</td>
         <td><a class="zoom-button" href="https://zoom.us/j/97117895490?pwd=ZmQ0RzY4K1UvNUU3TVF5Y2VYemVqQT09" target="_blank">Join</a></td>
         <td></td>
         <td></td>
-    </tr>
-</table>
+      </tr>
+    </table>
+  </div>
 
-        <h2>Notes</h2>
-        <table>
-            <tr>
-                <td><button class="drive-button" onclick="window.open('https://drive.google.com/drive/folders/1VRCtMaGPl0o5JepMOASI-WZu9G-3a43W?usp=sharing', '_blank')">Machine Learning</button></td>
-            </tr>
-            <tr>
-                <td><button class="drive-button" onclick="window.open('https://drive.google.com/drive/folders/1_l9dIeQ1BwOBsU48eumIn59CTcgCQsdo?usp=sharing', '_blank')">RPL</button></td>
-            </tr>
-        </table>
+  <h2>Notes</h2>
+  <div class="card drive-section">
+    <button class="drive-button" onclick="window.open('https://drive.google.com/drive/folders/1VRCtMaGPl0o5JepMOASI-WZu9G-3a43W?usp=sharing', '_blank')">Machine Learning</button>
+    <button class="drive-button" onclick="window.open('https://drive.google.com/drive/folders/1_l9dIeQ1BwOBsU48eumIn59CTcgCQsdo?usp=sharing', '_blank')">RPL</button>
+  </div>
+
 </body>
 </html>
